@@ -58,6 +58,12 @@ namespace Gate {
 			return UndeterminedState;
 		}
 
+
+		// implicit conversion, to eliminate the asString method
+		operator const char *() const { 
+			return asString(); 
+		}
+
 		const char * asString() const {
 			return isTrue() ? "true" : isFalse() ? "false" : "undetermined";
 		}
@@ -125,6 +131,10 @@ namespace Gate {
 
 		pintype operator!() const {
 			return !m_Result;
+		}
+
+		operator const char *() const { 
+			return m_Result.asString(); 
 		}
 
 	protected:
